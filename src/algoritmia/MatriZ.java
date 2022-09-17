@@ -12,7 +12,7 @@ public class MatriZ {
         int N = 0, M = 0, num;
         int matriz[][] = null;
 
-        while (op != 7) {
+        while (op != 8) {
             op = leerEntero(menu);
             switch (op) {
                 case 1:
@@ -49,41 +49,74 @@ public class MatriZ {
                      cm = 0;
                     for (int x = 0; x < N; x++) {
                         for (int y = 0; y < M; y++) {
-                            if(matriz[x][y]>=mayor){
-                            mayor = matriz[x][y];
-                            fm=x;
-                            cm=y;
+                            if (matriz[x][y] >= mayor) {
+                                mayor = matriz[x][y];
+                                fm = x;
+                                cm = y;
                             }
                         }
                     }
-                    Mostrar("el mayor numero es:"+mayor+"ubicado en [" + fm + "][" + cm + "]");
+                    Mostrar("el mayor numero es:" + mayor + "ubicado en [" + fm + "][" + cm + "]");
                     break;
                 case 5:
-                     menor = Integer.MAX_VALUE;
+                    menor = Integer.MAX_VALUE;
                     int fmen = 0,
                      cmen = 0;
                     for (int x = 0; x < N; x++) {
                         for (int y = 0; y < M; y++) {
-                            if(matriz[x][y]<=menor){
-                            menor = matriz[x][y];
-                            fmen=x;
-                            cmen=y;
+                            if (matriz[x][y] <= menor) {
+                                menor = matriz[x][y];
+                                fmen = x;
+                                cmen = y;
                             }
                         }
                     }
-                    Mostrar("el mayor numero es:"+menor+"ubicado en [" + fmen + "][" + cmen + "]");
+                    Mostrar("el mayor numero es:" + menor + "ubicado en [" + fmen + "][" + cmen + "]");
                     break;
                 case 6:
-                    int v1,v2,v3,v4;
-                    v1= matriz[0][0];
-                    v2 = matriz[0][M-1];
-                    v3 = matriz[N-1][0];
-                    v4 =matriz[N-1][M-1];
-                    Mostrar(v1+" " + v2 + "\n" + v3+ " "  + v4);
+                    int v1,
+                     v2,
+                     v3,
+                     v4;
+                    v1 = matriz[0][0];
+                    v2 = matriz[0][M - 1];
+                    v3 = matriz[N - 1][0];
+                    v4 = matriz[N - 1][M - 1];
+                    Mostrar(v1 + " " + v2 + "\n" + v3 + " " + v4);
                     break;
-                    
+                case 7:
+                    diagonales(matriz);
+                    break;
             }
         }
+    }
+
+    static void diagonales(int Matriz[][]) {
+
+        String total1 = "";
+        
+        int[] diagoSecundaria = new int[Matriz.length];
+        for (int i = 0; i < Matriz.length; i++) {
+            for (int j = 0; j < Matriz[i].length; j++) {
+                if (i == j) {
+                    total1 += Matriz[i][i] + " | ";
+                }
+
+                if (i + j == Matriz.length - 1) {
+                    diagoSecundaria[i] = Matriz[i][j];
+
+                }
+            }
+        }       
+        
+        String str = "[";
+                    for (int i = 0; i < Matriz.length; i++) {
+                        str = str+ diagoSecundaria[i] + ",";
+                    }
+                    str += "]";
+                    
+        Mostrar(str);            
+        Mostrar(total1);
     }
 
     static int leerEntero(String texto) {

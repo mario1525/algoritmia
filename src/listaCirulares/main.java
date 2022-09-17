@@ -1,19 +1,21 @@
-package listas;
+package listaCirulares;
 
 import javax.swing.JOptionPane;
+import listas.listas;
 
-public class listMain {
+public class main {
 
     public static void main(String[] args) {
 
         listas list = new listas();
         int op = 0;
         while (op != 6) {
-            op = leerEntero("Menu\n1 agregar al inicio \n"
+            op = leerEntero("Menu\n 1 agregar al inicio \n"
                     + "2 agregar a el final \n"
                     + "3 Mostrar \n"
                     + "4 eliminar por posicion \n"
-                    + "5 salir");
+                    + "5 eliminar lista \n"
+                    + "6 salir");
             switch (op) {
                 case 1:
                     int num2 = leerEntero("digite el numero ");
@@ -31,7 +33,6 @@ public class listMain {
                     list.dropPos(pos);
                     break;
                 case 5:
-                    list.ondulatoria();
                     break;
                 case 6:
                     Mostrar("fin del programa");

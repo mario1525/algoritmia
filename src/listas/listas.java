@@ -43,9 +43,9 @@ public class listas {
         if ((posicion >= 0) && (posicion < tamanio)) {
             if (posicion == 0) {
                 inicio = inicio.getSiguiente();
-            }else{
-                Nodo aux =inicio;
-                for(int i =0; i<posicion-1;i++){
+            } else {
+                Nodo aux = inicio;
+                for (int i = 0; i < posicion - 1; i++) {
                     aux = aux.getSiguiente();
                 }
                 Nodo sig = aux.getSiguiente();
@@ -79,5 +79,27 @@ public class listas {
             inicio = N;
         }
         tamanio++;
+    }
+
+    public void ondulatoria() {
+        int i = 0;
+        boolean M = true;
+        if (!vacia()) {
+            Nodo aux = inicio;
+            int val = aux.getValor();
+            while (aux != null) {
+                Nodo sig = aux.getSiguiente();
+                aux.setSiguiente(sig.getSiguiente());
+
+                if (aux.getValor() != val) {
+                    System.out.println("no es ondulatoria");
+                }else {
+                    System.out.println("ondulatoria");
+                }
+
+            }
+
+        }
+
     }
 }
